@@ -1,0 +1,92 @@
+.auth-container {
+    /*background-color: rgba(9, 53, 69, 1);*/
+    /*background-color: white;*/
+    min-height: 100vh;
+    background-image: url("https://img.freepik.com/premium-photo/toy-shopping-cart-with-boxes-credit-card-blue-background-copy-space-text-design-sale_339191-204.jpg?w=1380");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #000000;
+}
+.auth-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.auth-footer-img {
+    width: 100%;
+    object-fit: cover;
+}
+.auth-form {
+    padding-bottom: 150px;
+}
+
+
+.auth-form-wrapper-logo {
+    width: 100%;
+}
+
+.form-valid-feedback {
+    color: #f92121;
+    font-size: 15px;
+}
+.auth-form-wrapper-logo > img {
+    object-fit: cover;
+    height: 72px;
+}
+.auth-form-desc {
+    font-size: 16px;
+}
+
+.auth-check-input {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    position: unset;
+}
+
+.auth-check-label {
+    font-size: 14px;
+    margin-left: 4px;
+}
+
+.auth-input {
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 16px;
+    color: #000000;
+    width: 400px;
+}
+
+.auth-input:focus {
+    background-color: #f5f5f5;
+    color: #000000;
+    font-size: 16px;
+
+}
+
+.auth-input-group {
+    width: calc(50% - 5px);
+}
+
+.auth-input::placeholder {
+    color: #000000;
+}
+.auth-btn {
+    width: 400px;
+    background-color: #dadada;
+    color: #000000;
+    font-size: 18px;
+    height: 45px;
+    border-radius: 10px;
+    border:0;
+}
+
+.auth-btn:hover {
+    background-color: #000000;
+}
+

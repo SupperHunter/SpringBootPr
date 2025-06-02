@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="sidebar(key,subkey)" class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+    <div class="brand d-flex justify-content-between align-items-center" id="kt_brand">
+        <a href="/" class="d-flex">
+            <img alt="Logo" th:src="@{/images/logo-white.png}" />
+        </a>
+    </div>
+    <!--begin::Aside Menu-->
+    <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+        <div id="kt_aside_menu" class="aside-menu mb-1" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
+            <ul class="menu-nav">
+
+                <!-- Dashboard: luôn hiện -->
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="/admin" class="menu-link" th:classappend="${key == 'dashboard'} ? 'menu-active'">
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Quản lý sản phẩm -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManageProducts}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-1"
+                       th:classappend="${key == 'product'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'product'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý sản phẩm</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-1"
+                        th:classappend="${key == 'product'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'product_all'} ? 'menu-active'">
+                            <a href="/admin/product"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'product_new'} ? 'menu-active'">
+                            <a href="/admin/product/add"><span class="menu-text">Thêm mới</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý thể loại -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManageCategories}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-2"
+                       th:classappend="${key == 'category'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'category'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý thể loại</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-2"
+                        th:classappend="${key == 'category'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'category_all'} ? 'menu-active'">
+                            <a href="/admin/category"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'category_new'} ? 'menu-active'">
+                            <a href="/admin/category/add"><span class="menu-text">Thêm mới</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý người dùng -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManageUsers}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-3"
+                       th:classappend="${key == 'user'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'user'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý người dùng</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-3"
+                        th:classappend="${key == 'user'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'user_all'} ? 'menu-active'">
+                            <a href="/admin/user"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'user_new'} ? 'menu-active'">
+                            <a href="/admin/user/add"><span class="menu-text">Thêm mới</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý thương hiệu -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManageBrands}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-4"
+                       th:classappend="${key == 'brand'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'brand'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý thương hiệu</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-4"
+                        th:classappend="${key == 'brand'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'brand_all'} ? 'menu-active'">
+                            <a href="/admin/brand"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'brand_new'} ? 'menu-active'">
+                            <a href="/admin/brand/add"><span class="menu-text">Thêm mới</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý đơn hàng -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManageOrders}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-5"
+                       th:classappend="${key == 'order'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'order'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý đơn hàng</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-5"
+                        th:classappend="${key == 'order'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'order_all'} ? 'menu-active'">
+                            <a href="/admin/order"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý áp phích -->
+                <li class="menu-item d-flex flex-column justify-content-center"
+                    th:if="${canManagePosters}">
+                    <a data-toggle="collapse" href="#menu-item-collapse-6"
+                       th:classappend="${key == 'poster'} ? 'menu-active'"
+                       th:attr="aria-expanded=${key == 'poster'}"
+                       class="menu-link menu-toggle align-items-center">
+                        <span class="menu-text">Quản lý áp phích</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="collapse menu-item flex-column" id="menu-item-collapse-6"
+                        th:classappend="${key == 'poster'} ? 'show'">
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'poster_all'} ? 'menu-active'">
+                            <a href="/admin/poster"><span class="menu-text">Xem tất cả</span></a>
+                        </li>
+                        <li class="menu-link menu-item-sub" th:classappend="${subkey == 'poster_new'} ? 'menu-active'">
+                            <a href="/admin/poster/add"><span class="menu-text">Thêm mới</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <style>
+        .disabled-menu {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</header>
