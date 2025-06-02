@@ -40,10 +40,6 @@
 			<div class="mb-3 d-flex justify-content-center align-items-center">
 				<input type="password" name="password" class="form-control auth-input" th:placeholder="#{login.pass}" id="password" required>
 			</div>
-			<div th:if="${param.errorRcaptcha}" style="max-width: 400px;">
-				<p class="text-danger" style="margin-bottom: 5px; font-size: 15px" th:text="#{login.recaptcha}"></p>
-			</div>
-			<div  style="margin-bottom: 10px" class="g-recaptcha" data-sitekey="6LeauFIfAAAAAPVqTMvUvYw3itfkhcn4BXfaGtN4"></div>
 
 
 			<div class="mb-3 d-flex align-items-center justify-content-between">
