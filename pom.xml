@@ -149,10 +149,17 @@
 
     <build>
         <plugins>
-            <!-- Plugin để build Spring Boot -->
+            <!-- Plugin để build Spring Boot và đóng gói fat jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Plugin compiler hỗ trợ Lombok với JDK 17 -->
